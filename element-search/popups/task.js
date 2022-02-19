@@ -13,7 +13,8 @@ for (let i = 0; i < arr.length; i++) {
         }
     } else {
         arr[i].onclick = function() {
-            modalSuccess.className = 'modal modal_active';
+            modalSuccess.classList.toggle("modal_active");
+            modalActive[0].className = 'modal';
         }
     }
 }
