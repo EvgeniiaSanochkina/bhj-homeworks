@@ -25,7 +25,8 @@ add.forEach((el) => {
         const img = el.closest(`.product`).querySelector(`.product__image`).src;
         const value = el.closest(`.product`).querySelector(`.product__quantity-value`);
 
-        if (cartProduct.find(elem => id == elem.dataset.id) == undefined) {
+        const inCart = cartProduct.find(elem => id == elem.dataset.id);
+        if (inCart == undefined) {
             cartProducts.insertAdjacentHTML("beforeend", `
         <div class="cart__product" data-id="${id}">
             <img class="cart__product-image" src ="${img}">
@@ -33,8 +34,8 @@ add.forEach((el) => {
         </div>
         `)
         } else {
-            const addedProd = cartProduct.find(elem => id == elem.dataset.id);
-            const addedValue = addedProd.lastElementChild;
+            //const addedProd = cartProduct.find(elem => id == elem.dataset.id);
+            const addedValue = inCart.lastElementChild;
             addedValue.innerHTML = Number(addedValue.innerHTML) + Number(value.innerHTML);
         }
     })
